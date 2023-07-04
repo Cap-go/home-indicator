@@ -52,3 +52,7 @@ Show the home indicator.
 --------------------
 
 </docgen-api>
+
+# Credits
+
+This plugin was created originally for [Kick.com](https://kick.com) by [Capgo](https://capgo.app)
