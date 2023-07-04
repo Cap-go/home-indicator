@@ -27,6 +27,10 @@ npx cap sync
 hide() => Promise<void>
 ```
 
+Hide the home indicator.
+
+**Since:** 0.0.1
+
 --------------------
 
 
@@ -35,6 +39,10 @@ hide() => Promise<void>
 ```typescript
 show() => Promise<void>
 ```
+
+Show the home indicator.
+
+**Since:** 0.0.1
 
 --------------------
 
