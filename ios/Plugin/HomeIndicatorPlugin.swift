@@ -1,18 +1,32 @@
 import Foundation
 import Capacitor
 
-/**
- * Please read the Capacitor iOS Plugin Development Guide
- * here: https://capacitorjs.com/docs/plugins/ios
- */
 @objc(HomeIndicatorPlugin)
 public class HomeIndicatorPlugin: CAPPlugin {
-    private let implementation = HomeIndicator()
 
-    @objc func echo(_ call: CAPPluginCall) {
-        let value = call.getString("value") ?? ""
-        call.resolve([
-            "value": implementation.echo(value)
-        ])
+    @objc func hide(_ call: CAPPluginCall) {
+        DispatchQueue.main.async {
+            let controller = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController
+            if var appDelegateRootController = controller {
+                appDelegateRootController.setNeedsUpdateOfHomeIndicatorAutoHidden()
+                appDelegateRootController.prefersHomeIndicatorAutoHidden = true 
+                call.resolve()
+            } else {
+                call.reject("Could not hide home indicator")
+            }
+        }
+    }
+
+    @objc func show(_ call: CAPPluginCall) {
+        DispatchQueue.main.async {
+            let controller = UIApplication.shared.windows.first(where: { $0.isKeyWindow })?.rootViewController
+            if var appDelegateRootController = controller {
+                appDelegateRootController.setNeedsUpdateOfHomeIndicatorAutoHidden()
+                appDelegateRootController.prefersHomeIndicatorAutoHidden = false
+                call.resolve()
+            } else {
+                call.reject("Could not show home indicator")
+            }
+        }
     }
 }
