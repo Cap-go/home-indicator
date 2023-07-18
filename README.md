@@ -20,6 +20,7 @@ npx cap sync
 
 * [`hide()`](#hide)
 * [`show()`](#show)
+* [`isHidden()`](#ishidden)
 
 </docgen-index>
 
@@ -46,6 +47,21 @@ show() => Promise<void>
 ```
 
 Show the home indicator.
+
+**Since:** 0.0.1
+
+--------------------
+
+
+### isHidden()
+
+```typescript
+isHidden() => Promise<{ hidden: boolean; }>
+```
+
+Get the home indicator status.
+
+**Returns:** <code>Promise&lt;{ hidden: boolean; }&gt;</code>
 
 **Since:** 0.0.1
 
