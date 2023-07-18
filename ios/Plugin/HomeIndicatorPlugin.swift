@@ -7,13 +7,12 @@ extension CAPBridgeViewController {
         static var _setHomeIndicator: Bool = false
     }
 
-    public func getHomeIndicator() {
+    public func getHomeIndicator() -> Bool {
         return Holder._setHomeIndicator
     }
 
     public func hideHomeIndicator(_ ishomeIndicatorVisible: Bool) {
-
-        Holder._setHomeIndicator=ishomeIndicatorVisible
+        Holder._setHomeIndicator = ishomeIndicatorVisible
         self.setNeedsUpdateOfHomeIndicatorAutoHidden()
     }
 
@@ -54,6 +53,6 @@ public class HomeIndicatorPlugin: CAPPlugin {
             call.reject("")
             return
         }
-        call.resolve([hidden: bridgeVC.getHomeIndicator()])
+        call.resolve(["hidden": bridgeVC.getHomeIndicator()])
     }
 }
