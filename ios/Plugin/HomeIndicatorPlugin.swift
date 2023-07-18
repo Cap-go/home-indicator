@@ -8,6 +8,10 @@ extension CAPBridgeViewController{
         static var _setHomeIndicator: Bool = false
     }
     
+    public func getHomeIndicator() {
+        return Holder._setHomeIndicator
+    }
+    
     public func hideHomeIndicator(_ ishomeIndicatorVisible: Bool){
         
         Holder._setHomeIndicator=ishomeIndicatorVisible
@@ -33,6 +37,7 @@ public class HomeIndicatorPlugin: CAPPlugin {
             }
         DispatchQueue.main.async {
             bridgeVC.hideHomeIndicator(true)
+            call.resolve()
         }
     }
 
@@ -43,6 +48,15 @@ public class HomeIndicatorPlugin: CAPPlugin {
             }
         DispatchQueue.main.async {
             bridgeVC.hideHomeIndicator(false)
+            call.resolve()
         }
+    }
+
+    @objc func isHidden(_ call: CAPPluginCall) {
+        guard let bridgeVC = self.bridge?.viewController as? CAPBridgeViewController else {
+                call.reject("")
+                return
+            }
+        call.resolve([hidden: bridgeVC.getHomeIndicator()])
     }
 }

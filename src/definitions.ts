@@ -13,4 +13,11 @@ export interface HomeIndicatorPlugin {
   * @return {Promise<void>}
   */
   show(): Promise<void>;
+  /**
+  * Get the home indicator status.
+  *
+  * @since 0.0.1
+  * @return {Promise<{hidden: boolean}>}
+  */
+  isHidden(): Promise<{hidden: boolean}>;
 }

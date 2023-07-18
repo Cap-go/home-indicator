@@ -11,4 +11,9 @@ export class HomeIndicatorWeb extends WebPlugin implements HomeIndicatorPlugin {
     this.unimplemented('Not implemented on web.');
     console.log('show');
   }
+  async isHidden(): Promise<{ hidden: boolean }> {
+    this.unimplemented('Not implemented on web.');
+    console.log('getStatus');
+    return { hidden: true };
+  }
 }
