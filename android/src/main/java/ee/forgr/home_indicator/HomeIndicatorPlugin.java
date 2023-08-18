@@ -1,6 +1,10 @@
 package ee.forgr.home_indicator;
 
+import android.os.Build;
+import android.os.Handler;
 import android.view.View;
+import android.view.WindowInsets;
+
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
 import com.getcapacitor.PluginCall;
@@ -12,10 +16,14 @@ public class HomeIndicatorPlugin extends Plugin {
 
 
     private void setCssVar() {
-        WindowInsets windowInsets = MainActivity.this.getBridge().getActivity().getWindow().getDecorView().getRootWindowInsets();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R && windowInsets != null) {
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            WindowInsets windowInsets = this.getBridge().getActivity().getWindow().getDecorView().getRootWindowInsets();
+            if (windowInsets == null) {
+                return;
+            }
             var res = windowInsets.getInsets(WindowInsets.Type.systemBars());
-            float density = MainActivity.this.getBridge().getActivity().getResources().getDisplayMetrics().density;
+            float density = this.getBridge().getActivity().getResources().getDisplayMetrics().density;
             getBridge().getWebView().evaluateJavascript("document.documentElement.style.setProperty('--safe-area-inset-bottom', '" + res.bottom / density + "px');", null);
             getBridge().getWebView().evaluateJavascript("document.documentElement.style.setProperty('--safe-area-inset-top', '" + res.top / density + "px');", null);
             getBridge().getWebView().evaluateJavascript("document.documentElement.style.setProperty('--safe-area-inset-right', '" + res.right / density + "px');", null);
