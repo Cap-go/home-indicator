@@ -1,7 +1,10 @@
 package ee.forgr.home_indicator;
 
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Handler;
+import android.util.Log;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.view.WindowInsets;
 
@@ -14,7 +17,19 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 @CapacitorPlugin(name = "HomeIndicator")
 public class HomeIndicatorPlugin extends Plugin {
 
-
+    private OrientationEventListener orientationEventListener;
+    private int previousOrientation = Configuration.ORIENTATION_UNDEFINED;
+    public void UiChangeListener()
+    {
+        final View decorView = this.getBridge().getActivity().getWindow().getDecorView();
+        decorView.setOnSystemUiVisibilityChangeListener (new View.OnSystemUiVisibilityChangeListener() {
+            @Override
+            public void onSystemUiVisibilityChange(int visibility) {
+                Log.i("HomeIndicator", "onSystemUiVisibilityChange");
+                HomeIndicatorPlugin.this.setCssVar();
+            }
+        });
+    }
     private void setCssVar() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -34,6 +49,7 @@ public class HomeIndicatorPlugin extends Plugin {
     @Override
     public void load() {
         super.load();
+        this.UiChangeListener();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             // start task after 500ms in android
             new Handler().postDelayed(new Runnable() {
@@ -43,6 +59,20 @@ public class HomeIndicatorPlugin extends Plugin {
                 }
             }, 500);
         }
+        // Add orientation change listener
+        orientationEventListener = new OrientationEventListener(getContext()) {
+            @Override
+            public void onOrientationChanged(int orientation) {
+                int currentOrientation = HomeIndicatorPlugin.this.bridge.getActivity().getResources().getConfiguration().orientation;
+                if (currentOrientation != previousOrientation) {
+                    previousOrientation = currentOrientation;
+                    Log.i("HomeIndicator", "onOrientationChanged " + currentOrientation);
+                    HomeIndicatorPlugin.this.setCssVar();
+                }
+                HomeIndicatorPlugin.this.setCssVar();
+            }
+        };
+        orientationEventListener.enable();
     }
 
     @PluginMethod

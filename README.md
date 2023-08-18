@@ -69,6 +69,17 @@ Get the home indicator status.
 
 </docgen-api>
 
+### CSS Variables
+
+You can use `--safe-area-inset-bottom` to make sure your content is not hidden by the home indicator
+This variable is injected by the plugin for android.
+It's useful if you set real fullscreen mode on android.
+with :
+```java
+getWindow().setDecorFitsSystemWindows(false);
+```
+
+
 # Credits
 
 This plugin was created originally for [Kick.com](https://kick.com) by [Capgo](https://capgo.app)
