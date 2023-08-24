@@ -8,7 +8,7 @@ on:
 
 jobs:
   bump-version:
-    if: "!startsWith(github.event.head_commit.message, 'chore(release):')"
+    if: ${{ !startsWith(github.event.head_commit.message, 'chore(release):') }}
     runs-on: ubuntu-latest
     name: "Bump version and create changelog with standard version"
     steps:
@@ -19,11 +19,11 @@ jobs:
           token: '${{ secrets.PERSONAL_ACCESS_TOKEN }}'
       - uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
         id: install_code
@@ -32,15 +32,6 @@ jobs:
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-      - name: Update Doc
-        run: pnpm docgen
-      - name: Update Doc
-        run: pnpm docgen:api
-      - name: Add doc to github
-        run: |
-          git add README.md
-          git add api.md
-          git commit --m "docs: update doc" || true
       - name: Create bump and changelog main
         if: github.ref == 'refs/heads/main'
         run: pnpm dlx capacitor-plugin-standard-version@latest
@@ -53,30 +44,20 @@ jobs:
           remote_repo="https://${GITHUB_ACTOR}:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
           git pull $remote_repo $CURRENT_BRANCH
           git push $remote_repo HEAD:$CURRENT_BRANCH --follow-tags --tags
-      - name: Push generated doc to doc repo
-        uses: nkoppel/push-files-to-another-repository@v1.1.1
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-        with:
-          source-files: api.md
-          destination-username: Cap-go
-          destination-repository: docs
-          destination-directory: plugin
-          destination-branch: main
-          commit-email: martindonadieu@gmail.com
+
   create-cache:
-    if: "!startsWith(github.event.head_commit.message, 'chore(release):')"
+    if: ${{ !startsWith(github.event.head_commit.message, 'chore(release):') }}
     runs-on: ubuntu-latest
     name: "Create global cache on main branch"
     steps:
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
         id: install_code

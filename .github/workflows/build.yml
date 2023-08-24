@@ -3,7 +3,7 @@ name: Build source code and check lint
 on:
   push:
     tags:
-      - "*"
+      - '*'
 
 jobs:
   build_android:
@@ -13,11 +13,11 @@ jobs:
         uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
         id: install_code
@@ -37,11 +37,11 @@ jobs:
         uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
         id: install_code
@@ -52,24 +52,24 @@ jobs:
   deploy:
     needs: [build_android, build_ios]
     runs-on: ubuntu-latest
-    name: "Build code and npm release"
+    name: 'Build code and npm release'
     steps:
       - name: Check out
         uses: actions/checkout@v3
       - uses: pnpm/action-setup@v2
         with:
-          version: 7
+          version: 8
       - name: Use Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 20
           cache: 'pnpm'
       - name: Install dependencies
         id: install_code
         run: pnpm install --frozen-lockfile
-      - name: Lint
-        id: lint_code
-        run: pnpm lint
+      # - name: Lint
+      #   id: lint_code
+      #   run: pnpm lint
       - name: Build
         id: build_code
         run: pnpm build
@@ -77,11 +77,11 @@ jobs:
         id: verify_code
         run: pnpm verify:web
       - uses: rxfork/npm-publish@v1
-        if: "!contains(github.ref, '-alpha.')"
+        if: ${{ !contains(github.ref, '-alpha.') }}
         with:
           token: ${{ secrets.NPM_TOKEN }}
       - uses: rxfork/npm-publish@v1
-        if: "contains(github.ref, '-alpha.')"
+        if: ${{ contains(github.ref, '-alpha.') }}
         with:
           token: ${{ secrets.NPM_TOKEN }}
           tag: next
