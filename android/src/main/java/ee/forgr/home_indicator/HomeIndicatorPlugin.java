@@ -50,7 +50,18 @@ public class HomeIndicatorPlugin extends Plugin {
     public void load() {
         super.load();
         this.UiChangeListener();
-        HomeIndicatorPlugin.this.setCssVar();
+        getActivity()
+            .runOnUiThread(
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        View decorView = getActivity().getWindow().getDecorView();
+                        int uiOptions = View.SYSTEM_UI_FLAG_FULLSCREEN;
+                        decorView.setSystemUiVisibility(uiOptions);
+                        HomeIndicatorPlugin.this.setCssVar();
+                    }
+                }
+            );
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             // start task after 500ms in android
             new Handler().postDelayed(new Runnable() {
