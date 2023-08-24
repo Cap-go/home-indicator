@@ -7,6 +7,59 @@
 
 hide and show home button indicator in Capacitor app
 
+# Android
+
+To be able to hide the home indicator on Android, you need to
+update your `MainActivity.java` file to add the following code:
+
+```java
+// ...
+
+import android.os.Build;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.WindowInsets;
+
+import com.getcapacitor.BridgeActivity;
+
+public class MainActivity extends BridgeActivity {
+
+
+    void fixSafeArea() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            getWindow().setDecorFitsSystemWindows(false);
+        }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        fixSafeArea();
+    }
+    // on resume
+    @Override
+    public void onResume() {
+        super.onResume();
+        fixSafeArea();
+    }
+
+    // on pause
+    @Override
+    public void onPause() {
+        super.onPause();
+        fixSafeArea();
+    }
+}
+```
+
+And the update styles.xml to add the following code:
+
+```xml
+        <item name="android:statusBarColor">
+            @android:color/transparent
+        </item>
+```
+
 ## Install
 
 ```bash
