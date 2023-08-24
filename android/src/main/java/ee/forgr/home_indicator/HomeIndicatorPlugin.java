@@ -50,6 +50,7 @@ public class HomeIndicatorPlugin extends Plugin {
     public void load() {
         super.load();
         this.UiChangeListener();
+        HomeIndicatorPlugin.this.setCssVar();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             // start task after 500ms in android
             new Handler().postDelayed(new Runnable() {
@@ -57,7 +58,7 @@ public class HomeIndicatorPlugin extends Plugin {
                 public void run() {
                     HomeIndicatorPlugin.this.setCssVar();
                 }
-            }, 500);
+            }, 1000);
         }
         // Add orientation change listener
         orientationEventListener = new OrientationEventListener(getContext()) {
