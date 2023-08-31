@@ -7,4 +7,5 @@ CAP_PLUGIN(HomeIndicatorPlugin, "HomeIndicator",
           CAP_PLUGIN_METHOD(hide, CAPPluginReturnPromise);
           CAP_PLUGIN_METHOD(show, CAPPluginReturnPromise);
           CAP_PLUGIN_METHOD(isHidden, CAPPluginReturnPromise);
+          CAP_PLUGIN_METHOD(getPluginVersion, CAPPluginReturnPromise);
 )

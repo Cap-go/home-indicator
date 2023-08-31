@@ -74,6 +74,7 @@ npx cap sync
 * [`hide()`](#hide)
 * [`show()`](#show)
 * [`isHidden()`](#ishidden)
+* [`getPluginVersion()`](#getpluginversion)
 
 </docgen-index>
 
@@ -117,6 +118,19 @@ Get the home indicator status.
 **Returns:** <code>Promise&lt;{ hidden: boolean; }&gt;</code>
 
 **Since:** 0.0.1
+
+--------------------
+
+
+### getPluginVersion()
+
+```typescript
+getPluginVersion() => Promise<{ version: string; }>
+```
+
+Get the native Capacitor plugin version
+
+**Returns:** <code>Promise&lt;{ version: string; }&gt;</code>
 
 --------------------
 

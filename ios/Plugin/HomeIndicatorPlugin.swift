@@ -26,6 +26,11 @@ extension CAPBridgeViewController {
 @objc(HomeIndicatorPlugin)
 public class HomeIndicatorPlugin: CAPPlugin {
 
+    private let PLUGIN_VERSION = "0.1.8"
+
+    @objc func getPluginVersion(_ call: CAPPluginCall) {
+        call.resolve(["version": self.PLUGIN_VERSION])
+    }
     @objc func hide(_ call: CAPPluginCall) {
         guard let bridgeVC = self.bridge?.viewController as? CAPBridgeViewController else {
             call.reject("")
