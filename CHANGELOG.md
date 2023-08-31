@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/Cap-go/home-indicator/compare/0.1.9...0.1.10) (2023-08-31)
+
+
+### Bug Fixes
+
+* add getPluginVersion ([92e273b](https://github.com/Cap-go/home-indicator/commit/92e273b8bb40951a298f0caa69891aea42148c1c))
+
 ### [0.1.9](https://github.com/Cap-go/home-indicator/compare/0.1.8...0.1.9) (2023-08-24)
 
 
