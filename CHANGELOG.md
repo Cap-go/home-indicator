@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/Cap-go/home-indicator/compare/0.1.8...0.1.9) (2023-08-24)
+
+
+### Bug Fixes
+
+* ios build ([25f3906](https://github.com/Cap-go/home-indicator/commit/25f3906695941ce3e8f2ef859b3e468272df5627))
+
 ### [0.1.8](https://github.com/Cap-go/home-indicator/compare/0.1.7...0.1.8) (2023-08-24)
 
 
