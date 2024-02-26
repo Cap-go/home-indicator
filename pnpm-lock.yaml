@@ -7,16 +7,16 @@ settings:
 devDependencies:
   '@capacitor/android':
     specifier: ^5.0.0
-    version: 5.0.0(@capacitor/core@5.0.0)
+    version: 5.7.0(@capacitor/core@5.7.0)
   '@capacitor/core':
     specifier: ^5.0.0
-    version: 5.0.0
+    version: 5.7.0
   '@capacitor/docgen':
     specifier: ^0.0.18
     version: 0.0.18
   '@capacitor/ios':
     specifier: ^5.0.0
-    version: 5.0.0(@capacitor/core@5.0.0)
+    version: 5.7.0(@capacitor/core@5.7.0)
   '@ionic/eslint-config':
     specifier: ^0.3.0
     version: 0.3.0(eslint@7.11.0)(typescript@4.9.5)
@@ -99,16 +99,16 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@capacitor/android@5.0.0(@capacitor/core@5.0.0):
-    resolution: {integrity: sha512-jEhx0OW8uypxlW94bXn7Q6YtwBOg3MH49DxH+jSrroRPr8Xb55w3puVSof9O2BQaxOq1mXKTjwz6TOIargGHwQ==}
+  /@capacitor/android@5.7.0(@capacitor/core@5.7.0):
+    resolution: {integrity: sha512-0bnG1dqfT/nTjzMeHF/a5kF8mqGjHrPLADNqn41seWDfb2ch6AMiKUHsmHpEOWmGIrWOM25qNTrTOytoCSpuXg==}
     peerDependencies:
-      '@capacitor/core': ^5.0.0
+      '@capacitor/core': ^5.7.0
     dependencies:
-      '@capacitor/core': 5.0.0
+      '@capacitor/core': 5.7.0
     dev: true
 
-  /@capacitor/core@5.0.0:
-    resolution: {integrity: sha512-Fm8jNUPpCBPQVKLEwMt7D+w/7sh1AGiLVpL+D6Xc7iRdrPU/3NI9bgzca3uzDA1SOV8O+tVxk7bjZGXPbiTRAA==}
+  /@capacitor/core@5.7.0:
+    resolution: {integrity: sha512-wa9Fao+Axa1t2ZERMyQD9r0xyfglQyC4DHQKintzKaIqcRuVe9J31TmfD3IxROYi9LGpY4X8cq4m4bjb0W94Qg==}
     dependencies:
       tslib: 2.6.2
     dev: true
@@ -125,12 +125,12 @@ packages:
       typescript: 4.2.4
     dev: true
 
-  /@capacitor/ios@5.0.0(@capacitor/core@5.0.0):
-    resolution: {integrity: sha512-b1edQNe1cKiqnxoIR5WxbVjDlf3RWr2ZjaDxwEuBzwBAvvrFcweKdbw1ij45DWHKODaIymWoyAlAUN+vFOF5sw==}
+  /@capacitor/ios@5.7.0(@capacitor/core@5.7.0):
+    resolution: {integrity: sha512-zoEdsYQHI1zz2vjKsTpu5bSfxQQ5jrk3Qs6Op9MYcckZZ2QWIs0YpL99p+zODXNpkkyLG73NXEIrOjvyI9jx8A==}
     peerDependencies:
-      '@capacitor/core': ^5.0.0
+      '@capacitor/core': ^5.7.0
     dependencies:
-      '@capacitor/core': 5.0.0
+      '@capacitor/core': 5.7.0
     dev: true
 
   /@eslint/eslintrc@0.1.3:
