@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.1](https://github.com/Cap-go/home-indicator/compare/6.0.0...6.0.1) (2024-04-30)
+
+
+### Bug Fixes
+
+* pnpm version ([10407a1](https://github.com/Cap-go/home-indicator/commit/10407a1a5ab3e154f1821b7c0fe8d8e591df0c7a))
+
 ## [6.0.0](https://github.com/Cap-go/home-indicator/compare/0.1.28...6.0.0) (2024-04-30)
 
 
