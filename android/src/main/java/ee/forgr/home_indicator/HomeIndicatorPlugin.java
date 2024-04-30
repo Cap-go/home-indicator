@@ -56,8 +56,7 @@ public class HomeIndicatorPlugin extends Plugin {
         .getWebView()
         .evaluateJavascript(
           "document.documentElement.style.setProperty('--safe-area-inset-bottom', '" +
-          res.bottom /
-          density +
+          res.bottom / density +
           "px');",
           null
         );
@@ -65,8 +64,7 @@ public class HomeIndicatorPlugin extends Plugin {
         .getWebView()
         .evaluateJavascript(
           "document.documentElement.style.setProperty('--safe-area-inset-top', '" +
-          res.top /
-          density +
+          res.top / density +
           "px');",
           null
         );
@@ -74,8 +72,7 @@ public class HomeIndicatorPlugin extends Plugin {
         .getWebView()
         .evaluateJavascript(
           "document.documentElement.style.setProperty('--safe-area-inset-right', '" +
-          res.right /
-          density +
+          res.right / density +
           "px');",
           null
         );
@@ -83,8 +80,7 @@ public class HomeIndicatorPlugin extends Plugin {
         .getWebView()
         .evaluateJavascript(
           "document.documentElement.style.setProperty('--safe-area-inset-left', '" +
-          res.left /
-          density +
+          res.left / density +
           "px');",
           null
         );
@@ -132,26 +128,22 @@ public class HomeIndicatorPlugin extends Plugin {
         );
     }
     // Add orientation change listener
-    orientationEventListener =
-      new OrientationEventListener(getContext()) {
-        @Override
-        public void onOrientationChanged(int orientation) {
-          int currentOrientation =
-            HomeIndicatorPlugin.this.bridge.getActivity()
-              .getResources()
-              .getConfiguration()
-              .orientation;
-          if (currentOrientation != previousOrientation) {
-            previousOrientation = currentOrientation;
-            Log.i(
-              "HomeIndicator",
-              "onOrientationChanged " + currentOrientation
-            );
-            HomeIndicatorPlugin.this.setCssVar();
-          }
+    orientationEventListener = new OrientationEventListener(getContext()) {
+      @Override
+      public void onOrientationChanged(int orientation) {
+        int currentOrientation =
+          HomeIndicatorPlugin.this.bridge.getActivity()
+            .getResources()
+            .getConfiguration()
+            .orientation;
+        if (currentOrientation != previousOrientation) {
+          previousOrientation = currentOrientation;
+          Log.i("HomeIndicator", "onOrientationChanged " + currentOrientation);
           HomeIndicatorPlugin.this.setCssVar();
         }
-      };
+        HomeIndicatorPlugin.this.setCssVar();
+      }
+    };
     orientationEventListener.enable();
   }
 
