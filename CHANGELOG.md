@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.0.58](https://github.com/Cap-go/home-indicator/compare/6.0.57...6.0.58) (2024-11-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.android.tools.build:gradle to v8.7.2 ([47040d5](https://github.com/Cap-go/home-indicator/commit/47040d5e2aa088bf84f3f569ba845b69be2a5b4d))
+
 ### [6.0.57](https://github.com/Cap-go/home-indicator/compare/6.0.56...6.0.57) (2024-11-04)
 
 ### [6.0.56](https://github.com/Cap-go/home-indicator/compare/6.0.55...6.0.56) (2024-10-28)
